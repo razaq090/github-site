@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdul Razaq Khan — AI / NLP · Research &amp; Applied Systems</title>
+<meta name="description" content="Research portfolio of Abdul Razaq Khan — AI and NLP, linguistic data science, and multilingual, low-resource, and code-mixed language research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAFAF6;
+  --paper-alt:#F1EEE5;
+  --ink:#1B1A17;
+  --ink-soft:#57534A;
+  --ink-faint:#8A8578;
+  --indigo:#2C3A63;
+  --indigo-deep:#1E2A48;
+  --ochre:#A9752F;
+  --ochre-soft:#EFE1C8;
+  --sage:#4E6E58;
+  --sage-soft:#E1EAE2;
+  --rose:#9A4B41;
+  --rose-soft:#F1E0DC;
+  --rule:#DDD8C9;
+  --rule-strong:#C8C1AC;
+  --radius:2px;
+  --maxw:900px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:15.5px;
+  line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+}
+h1,h2,h3,h4{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  color:var(--ink);
+  margin:0;
+  letter-spacing:-0.01em;
+}
+a{color:var(--indigo); text-decoration:none;}
+a:hover{text-decoration:underline;}
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--indigo);
+  outline-offset:3px;
+}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.13em;
+  text-transform:uppercase;
+  color:var(--ochre);
+  font-weight:600;
+  margin-bottom:12px;
+  display:block;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+/* ---------- NAV ---------- */
+.siterail{
+  position:fixed; top:0; left:0; bottom:0; width:60px;
+  border-right:1px solid var(--rule);
+  background:var(--paper);
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:space-between;
+  padding:26px 0;
+  z-index:100;
+}
+.siterail .mark{
+  writing-mode:vertical-rl;
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:0.06em;
+  color:var(--ink);
+}
+.siterail nav{display:flex; flex-direction:column; gap:19px; align-items:center;}
+.siterail nav a{
+  writing-mode:vertical-rl;
+  color:var(--ink-soft);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;
+  letter-spacing:0.09em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:4px 0;
+  border-right:2px solid transparent;
+}
+.siterail nav a:hover, .siterail nav a.active{ color:var(--indigo); border-right-color:var(--ochre);}
+.siterail .railbottom a{color:var(--ink-faint); writing-mode:vertical-rl; font-family:'IBM Plex Mono',monospace; font-size:10px;}
+
+.topbar{display:none; position:sticky; top:0; z-index:100; background:rgba(250,250,246,0.96); backdrop-filter:blur(6px); border-bottom:1px solid var(--rule);}
+.topbar-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 20px;}
+.topbar .mark{font-family:'Fraunces',serif; font-weight:600; font-size:16px;}
+.topbar button{background:none; border:1px solid var(--rule-strong); border-radius:var(--radius); padding:6px 10px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer;}
+.mobilemenu{display:none; flex-direction:column; padding:6px 20px 18px; border-bottom:1px solid var(--rule); background:var(--paper);}
+.mobilemenu a{padding:9px 0; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); border-bottom:1px solid var(--rule);}
+.mobilemenu.open{display:flex;}
+
+main{margin-left:60px;}
+
+/* ---------- SECTION SCAFFOLD ---------- */
+section{padding:80px 0; border-bottom:1px solid var(--rule);}
+section:last-of-type{border-bottom:none;}
+section.alt{background:var(--paper-alt);}
+.section-head{margin-bottom:44px;}
+.section-head h2{font-size:clamp(23px,3vw,29px);}
+.section-intro{color:var(--ink-soft); max-width:62ch; margin-top:12px; font-size:15px;}
+
+/* ---------- HERO ---------- */
+.hero{padding:88px 0 68px; border-bottom:1px solid var(--rule);}
+.hero .eyebrow{margin-bottom:16px;}
+.hero h1{font-size:clamp(30px,4vw,40px); line-height:1.12;}
+.hero .tagline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  letter-spacing:0.03em;
+  color:var(--ink-soft);
+  margin-top:10px;
+}
+.hero .position{
+  font-size:15.5px;
+  color:var(--ink-soft);
+  max-width:62ch;
+  margin-top:24px;
+}
+.hero-links{
+  margin-top:26px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  letter-spacing:0.02em;
+  color:var(--ink-faint);
+}
+.hero-links a{color:var(--indigo); margin-right:2px;}
+.hero-links .sep{margin:0 10px; color:var(--rule-strong);}
+
+.focus-now{
+  margin-top:44px;
+  border-left:2px solid var(--ochre);
+  padding-left:18px;
+}
+.focus-now .label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.09em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;}
+.focus-now p{margin:0; font-size:14.5px; color:var(--ink-soft); max-width:64ch;}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid; grid-template-columns:1fr 250px; gap:52px; align-items:start;}
+.about-grid p{margin:0 0 15px; color:var(--ink-soft); font-size:15px;}
+.about-grid p:last-child{margin-bottom:0;}
+.facts{border-left:2px solid var(--rule-strong); padding-left:20px;}
+.facts dt{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; color:var(--ink-faint); margin-top:16px;}
+.facts dt:first-child{margin-top:0;}
+.facts dd{margin:4px 0 0; font-size:14px; color:var(--ink);}
+
+/* ---------- RESEARCH ---------- */
+.theme-list{border-top:1px solid var(--rule);}
+.theme-row{
+  display:grid; grid-template-columns:230px 1fr;
+  gap:24px;
+  padding:22px 0;
+  border-bottom:1px solid var(--rule);
+}
+.theme-row h3{font-size:16.5px; font-weight:600;}
+.theme-row p{margin:0; font-size:14.5px; color:var(--ink-soft);}
+
+.current-research{
+  margin-top:56px;
+  border:1px solid var(--rule-strong);
+  background:#fff;
+  border-radius:var(--radius);
+  padding:32px;
+}
+.current-research .eyebrow{margin-bottom:10px;}
+.current-research h3{font-size:20px; margin-bottom:14px;}
+.current-research p{font-size:14.5px; color:var(--ink-soft); margin:0 0 14px;}
+.current-research p:last-of-type{margin-bottom:0;}
+.cr-facts{display:grid; grid-template-columns:repeat(2,1fr); gap:10px 28px; margin:18px 0; padding:18px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
+.cr-facts dt{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint);}
+.cr-facts dd{margin:3px 0 0; font-size:13.5px; color:var(--ink);}
+
+.example-strip{
+  margin-top:18px;
+  border:1px solid var(--rule);
+  background:var(--paper-alt);
+  border-radius:var(--radius);
+  padding:16px 18px;
+}
+.example-strip .anno-label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px;}
+.anno-tokens{display:flex; flex-wrap:wrap; gap:6px 6px; align-items:flex-end;}
+.tok{display:inline-flex; flex-direction:column; align-items:center;}
+.tok .w{font-family:'Fraunces',serif; font-size:15.5px; color:var(--ink); padding:1px 4px;}
+.tok .tag{
+  font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.03em; text-transform:uppercase;
+  padding:1px 5px; border-radius:2px; margin-top:2px;
+}
+.tag.pos{background:var(--sage-soft); color:var(--sage);}
+.tag.neg{background:var(--rose-soft); color:var(--rose);}
+.tag.neu{background:#fff; color:var(--ink-faint); border:1px solid var(--rule);}
+
+/* ---------- PROJECT CARDS ---------- */
+.project{
+  border:1px solid var(--rule-strong);
+  background:#fff;
+  border-radius:var(--radius);
+  padding:30px;
+  margin-bottom:20px;
+}
+.project:last-child{margin-bottom:0;}
+.project-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:6px;}
+.project h3{font-size:19px;}
+.project .pnum{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint); margin-bottom:6px; display:block;}
+.status{
+  font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase;
+  padding:4px 9px; border-radius:2px; white-space:nowrap; height:fit-content;
+}
+.status.ongoing{background:var(--ochre-soft); color:var(--ochre);}
+.status.deployed{background:var(--sage-soft); color:var(--sage);}
+.status.experiment{background:var(--paper-alt); color:var(--ink-soft); border:1px solid var(--rule);}
+.meta-table{display:grid; grid-template-columns:130px 1fr; gap:10px 16px; margin:16px 0 18px;}
+.meta-table dt{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); padding-top:2px;}
+.meta-table dd{margin:0; font-size:14px; color:var(--ink-soft);}
+.meta-table dd.learned{color:var(--ink); font-style:italic;}
+.project-links{display:flex; gap:16px; flex-wrap:wrap; border-top:1px solid var(--rule); padding-top:14px; margin-top:2px;}
+.project-links a{font-family:'IBM Plex Mono',monospace; font-size:11.5px;}
+
+/* ---------- PUBLICATIONS ---------- */
+.pub-status{
+  display:flex; align-items:center; gap:12px;
+  border:1px solid var(--rule-strong); background:#fff; border-radius:var(--radius);
+  padding:20px 24px; margin-bottom:28px;
+}
+.pub-status .dot{width:8px; height:8px; border-radius:50%; background:var(--ink-faint); flex-shrink:0;}
+.pub-status p{margin:0; font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:0.02em; color:var(--ink-soft);}
+.pub-status strong{color:var(--ink);}
+.wip{border:1px dashed var(--rule-strong); border-radius:var(--radius); padding:30px 32px; background:var(--paper-alt);}
+.wip .eyebrow{margin-bottom:10px;}
+.wip h3{font-size:17px; margin-bottom:8px;}
+.wip p{margin:0; font-size:14px; color:var(--ink-soft); max-width:64ch;}
+
+/* ---------- DATASETS ---------- */
+.dataset-card{border:1px solid var(--rule-strong); background:#fff; border-radius:var(--radius); padding:30px;}
+.dataset-card h3{font-size:19px; margin-bottom:6px;}
+.dataset-card .sub{font-size:13.5px; color:var(--ink-soft); margin-bottom:22px;}
+.dstat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-bottom:22px;}
+.dstat{background:var(--paper-alt); padding:14px 12px;}
+.dstat .n{font-family:'Fraunces',serif; font-size:19px; font-weight:600; color:var(--indigo);}
+.dstat .l{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-faint); margin-top:3px;}
+.dataset-card p{font-size:14px; color:var(--ink-soft); margin:0 0 10px;}
+.dataset-card p strong{color:var(--ink); font-weight:600;}
+
+/* ---------- EXPERIMENTS / RESEARCH NOTES ---------- */
+.exp-log{border:1px solid var(--rule-strong); background:#fff; border-radius:var(--radius); overflow:hidden;}
+.exp-head{padding:20px 26px; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+.exp-head h3{font-size:17.5px;}
+.exp-body{padding:26px;}
+.exp-field{margin-bottom:18px;}
+.exp-field:last-child{margin-bottom:0;}
+.exp-field .k{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; color:var(--ochre); margin-bottom:5px;}
+.exp-field .v{font-size:14px; color:var(--ink-soft); margin:0;}
+.exp-field .v strong{color:var(--ink);}
+.result-bar-wrap{margin-top:6px;}
+.result-bar{display:flex; align-items:center; gap:12px; margin-bottom:8px;}
+.result-bar .rl{font-family:'IBM Plex Mono',monospace; font-size:11px; width:110px; color:var(--ink-soft); flex-shrink:0;}
+.result-bar .track{flex:1; height:6px; background:var(--paper-alt); border-radius:3px; overflow:hidden;}
+.result-bar .fill{height:100%; border-radius:3px;}
+.result-bar .fill.pre{background:var(--rule-strong); width:91%;}
+.result-bar .fill.post{background:var(--sage); width:87.8%;}
+.result-bar .rv{font-family:'IBM Plex Mono',monospace; font-size:11.5px; width:48px; text-align:right; color:var(--ink);}
+.next-note{margin-top:22px; padding-top:18px; border-top:1px dashed var(--rule);}
+
+.notebook-note{font-size:12.5px; color:var(--ink-faint); margin-top:18px; font-family:'IBM Plex Mono',monospace;}
+
+/* ---------- GITHUB ---------- */
+.repo-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+.repo{border:1px solid var(--rule-strong); background:#fff; border-radius:var(--radius); padding:20px;}
+.repo-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px;}
+.repo h3{font-size:15.5px;}
+.repo p{font-size:13.5px; color:var(--ink-soft); margin:0 0 12px;}
+.repo-tech{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;}
+.repo-tech span{font-family:'IBM Plex Mono',monospace; font-size:10px; padding:3px 8px; background:var(--paper-alt); border-radius:2px; color:var(--ink-soft);}
+.repo a.gh{font-family:'IBM Plex Mono',monospace; font-size:11.5px;}
+
+/* ---------- CV ---------- */
+.cv-panel{display:grid; grid-template-columns:1fr 230px; gap:38px; align-items:start; border:1px solid var(--rule-strong); background:#fff; border-radius:var(--radius); padding:34px;}
+.cv-panel .cv-summary h3{font-size:18px; margin-bottom:12px;}
+.cv-panel ul{margin:0; padding-left:18px; color:var(--ink-soft); font-size:14px;}
+.cv-panel li{margin-bottom:8px;}
+.cv-side{border-left:1px solid var(--rule); padding-left:26px; display:flex; flex-direction:column; gap:14px;}
+.cv-side .btn{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.05em; text-transform:uppercase;
+  padding:11px 16px; border-radius:var(--radius); border:1px solid var(--indigo); color:var(--indigo);
+  text-align:center; text-decoration:none; background:var(--indigo); color:#fff;
+}
+.cv-side .btn:hover{background:var(--indigo-deep); text-decoration:none;}
+.cv-side .note{font-size:11.5px; color:var(--ink-faint); line-height:1.5;}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule);}
+.contact-item{background:#fff; padding:22px; display:flex; flex-direction:column; gap:7px;}
+.contact-item .l{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; color:var(--ink-faint);}
+.contact-item a{font-size:14px; font-weight:500; word-break:break-word;}
+
+footer{padding:32px 0 56px;}
+footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+footer p{margin:0; font-size:12px; color:var(--ink-faint); font-family:'IBM Plex Mono',monospace;}
+
+.reveal{opacity:0; transform:translateY(8px); transition:opacity 0.5s ease, transform 0.5s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .theme-row{grid-template-columns:1fr; gap:6px;}
+  .repo-grid{grid-template-columns:1fr;}
+  .dstat-grid{grid-template-columns:repeat(2,1fr);}
+  .cv-panel{grid-template-columns:1fr;}
+  .cv-side{border-left:none; border-top:1px solid var(--rule); padding-left:0; padding-top:20px;}
+  .contact-grid{grid-template-columns:repeat(2,1fr);}
+  .cr-facts{grid-template-columns:1fr;}
+}
+@media (max-width:760px){
+  .siterail{display:none;}
+  .topbar{display:block;}
+  main{margin-left:0;}
+  section{padding:56px 0;}
+  .hero{padding:44px 0 52px;}
+  .meta-table{grid-template-columns:1fr;}
+  .meta-table dt{padding-top:8px;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- desktop rail nav -->
+<aside class="siterail">
+  <div class="mark">A. RAZAQ</div>
+  <nav aria-label="Section navigation">
+    <a href="#home" class="navlink">Home</a>
+    <a href="#about" class="navlink">About</a>
+    <a href="#research" class="navlink">Research</a>
+    <a href="#projects" class="navlink">Projects</a>
+    <a href="#notes" class="navlink">Notes</a>
+    <a href="#publications" class="navlink">Publications</a>
+    <a href="#datasets" class="navlink">Datasets</a>
+    <a href="#github" class="navlink">GitHub</a>
+    <a href="#cv" class="navlink">CV</a>
+    <a href="#contact" class="navlink">Contact</a>
+  </nav>
+  <div class="railbottom">
+    <a href="https://huggingface.co/abdul-razaq-ork" target="_blank" rel="noopener" aria-label="Hugging Face">HF</a>
+  </div>
+</aside>
+
+<!-- mobile topbar -->
+<div class="topbar">
+  <div class="topbar-inner wrap" style="padding:0;">
+    <span class="mark">A. Razaq Khan</span>
+    <button id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+  </div>
+</div>
+<div class="mobilemenu" id="mobileMenu">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#research">Research</a>
+  <a href="#projects">Projects</a>
+  <a href="#notes">Research Notes</a>
+  <a href="#publications">Publications</a>
+  <a href="#datasets">Datasets</a>
+  <a href="#github">GitHub</a>
+  <a href="#cv">CV</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <h1>Abdul Razaq Khan</h1>
+    <div class="tagline">AI / NLP · Research &amp; Applied Systems</div>
+    <p class="position">I work across artificial intelligence, natural language processing, and linguistic data — building datasets, models, and applied systems. My current research involves Pashto and multilingual, code-mixed text, alongside broader interests in low-resource NLP and AI for education.</p>
+    <div class="hero-links">
+      <a href="#research">Research</a><span class="sep">·</span><a href="#projects">Projects</a><span class="sep">·</span><a href="#cv">CV</a><span class="sep">·</span><a href="#github">GitHub</a>
+    </div>
+    <div class="focus-now">
+      <div class="label">Currently working on</div>
+      <p>Preparing the Romanized Pashto sentiment analysis work for submission, while extending the annotation platform used to build and quality-check the underlying dataset.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">About</span>
+      <h2>Background</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <p>I'm a final-year Information Technology student developing toward research in artificial intelligence and natural language processing. My academic background is in IT rather than linguistics or computer science by name, so most of what I know about NLP research — dataset construction, annotation, model evaluation — I've learned by building it directly, mainly through my final-year project.</p>
+        <p>I'm interested in how language behaves computationally: how models handle text that mixes languages and writing systems, how much data a language actually needs before NLP methods work on it, and how those methods can be applied to education. My current work is on Pashto — a language I speak, and one where almost no labeled data existed before I started building it.</p>
+        <p>I'm early in this path. I don't yet have publications, and I try to describe my work at the stage it's actually at rather than further along. What I do have is a consistent habit of building — a fine-tuned model, an annotation platform, a dataset, an applied learning tool — and documenting the process, including the parts that didn't work the first time. I'm hoping to continue this work at the graduate level.</p>
+      </div>
+      <dl class="facts">
+        <dt>Degree</dt>
+        <dd>BS Information Technology, University of Agriculture, Peshawar</dd>
+        <dt>Expected graduation</dt>
+        <dd>July 2026</dd>
+        <dt>Based in</dt>
+        <dd>Kohat / Hangu, Khyber Pakhtunkhwa, Pakistan</dd>
+        <dt>Working across</dt>
+        <dd>AI, NLP, linguistic data, applied systems</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section class="alt" id="research">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Research</span>
+      <h2>Research interests</h2>
+      <p class="section-intro">Broad areas I read and build in. Current research, below, is more specific.</p>
+    </div>
+    <div class="theme-list reveal">
+      <div class="theme-row">
+        <h3>Natural Language Processing</h3>
+        <p>Text classification, multilingual NLP, language modeling, and practical NLP systems.</p>
+      </div>
+      <div class="theme-row">
+        <h3>Linguistic Data Science</h3>
+        <p>Dataset construction, annotation, corpus development, evaluation, and data quality.</p>
+      </div>
+      <div class="theme-row">
+        <h3>Multilingual &amp; Code-Mixed Language</h3>
+        <p>How language behaves when speakers mix languages and writing systems within the same sentence.</p>
+      </div>
+      <div class="theme-row">
+        <h3>Low-Resource NLP</h3>
+        <p>Methods and datasets for languages where labeled data and NLP tooling are limited.</p>
+      </div>
+      <div class="theme-row">
+        <h3>AI for Education</h3>
+        <p>Using AI and language technologies to support learning and build educational tools.</p>
+      </div>
+    </div>
+
+    <div class="current-research reveal">
+      <span class="eyebrow">Current Research</span>
+      <h3>Sentiment analysis of Romanized Pashto text</h3>
+      <p>My current research applies the themes above to a specific, concrete case: Pashto as it's actually typed online — mixed with Urdu and English, written in Roman script, with no standard spelling. There was effectively no labeled sentiment data for this variety of the language when I started, so the first part of the work has been building the dataset itself, then fine-tuning and evaluating a model on it.</p>
+      <dl class="cr-facts">
+        <dt>Language</dt><dd>Romanized, code-mixed Pashto (Pashto–Urdu–English, Roman script)</dd>
+        <dt>Task</dt><dd>3-class sentiment classification</dd>
+        <dt>Dataset</dt><dd>~4,000 manually annotated sentences</dd>
+        <dt>Model</dt><dd>Fine-tuned XLM-RoBERTa, 87.8% weighted F1</dd>
+      </dl>
+      <div class="example-strip">
+        <div class="anno-label">Example from the dataset</div>
+        <div class="anno-tokens">
+          <span class="tok"><span class="w">Da kitab</span><span class="tag neu">neutral</span></span>
+          <span class="tok"><span class="w">za ba khwakh lolam,</span><span class="tag pos">positive</span></span>
+          <span class="tok"><span class="w">kho da translation kharab dai.</span><span class="tag neg">negative</span></span>
+        </div>
+      </div>
+      <p>Full details — problem framing, method, and what the work has surfaced so far — are in Projects and Research Notes below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Research Projects</span>
+      <h2>Projects</h2>
+      <p class="section-intro">Presented as evidence of work, not as pitches. Each is labeled by status.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="project">
+        <span class="pnum">01</span>
+        <div class="project-top">
+          <h3>Romanized Pashto Sentiment Analysis</h3>
+          <span class="status ongoing">Research · Ongoing (FYP)</span>
+        </div>
+        <dl class="meta-table">
+          <dt>Problem</dt><dd>Almost no labeled sentiment data exists for Romanized, code-mixed Pashto — a spelling-inconsistent variety with no orthographic standard.</dd>
+          <dt>Approach</dt><dd>Built a ~4,000-sentence manually annotated dataset (Positive/Negative/Neutral) from Facebook, Twitter, and WhatsApp, then fine-tuned a multilingual transformer for classification.</dd>
+          <dt>Technologies</dt><dd>XLM-RoBERTa, Google Colab (T4 GPU), FastAPI serving platform.</dd>
+          <dt>What was learned</dt><dd class="learned">An early 91% weighted F1 turned out to be inflated by a data-leakage bug in the train/validation split; correcting it produced a lower but trustworthy 87.8%. Reliable evaluation matters more than a high headline number.</dd>
+          <dt>Supervisor</dt><dd>Dr. Rafiullah</dd>
+        </dl>
+        <div class="project-links">
+          <a href="https://huggingface.co/abdul-razaq-ork/Romanized_Pashto_Sentiment" target="_blank" rel="noopener">Model on HuggingFace ↗</a>
+          <a href="#datasets">Dataset details →</a>
+          <a href="#notes">Full research note →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <span class="pnum">02</span>
+        <div class="project-top">
+          <h3>Pashto Sentiment Annotation Platform</h3>
+          <span class="status ongoing">Ongoing</span>
+        </div>
+        <dl class="meta-table">
+          <dt>Problem</dt><dd>Getting consistent sentiment labels from multiple annotators on a language with no spelling standard.</dd>
+          <dt>Approach</dt><dd>Built a multi-role web platform for annotators and reviewers to label Romanized Pashto text, to extend and quality-control the dataset beyond the initial ~4,000 sentences.</dd>
+          <dt>Technologies</dt><dd>FastAPI, HTML — migrated from an earlier Flask prototype.</dd>
+          <dt>What was learned</dt><dd class="learned">Migrating the tool from Flask to FastAPI and resolving a port conflict during integration was a reminder that applied NLP work is often systems engineering as much as modeling.</dd>
+        </dl>
+        <div class="project-links">
+          <a href="#notes">Related research note →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <span class="pnum">03</span>
+        <div class="project-top">
+          <h3>Pashto Language Learning / Flashcard System</h3>
+          <span class="status deployed">Deployed · AI for Education</span>
+        </div>
+        <dl class="meta-table">
+          <dt>Problem</dt><dd>Pashto has few structured resources for learners with no prior exposure to the language.</dd>
+          <dt>Approach</dt><dd>Built a flashcard-based application for teaching Pashto to learners anywhere in the world.</dd>
+          <dt>What was learned</dt><dd class="learned">Teaching a real learner one-on-one — a student in the United States, aged 60+ — surfaced usability needs that weren't obvious from building the app alone.</dd>
+        </dl>
+        <div class="project-links">
+          <a href="#github">Repository →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <span class="pnum">04</span>
+        <div class="project-top">
+          <h3>RAG / NLP Experiments</h3>
+          <span class="status experiment">Experiment</span>
+        </div>
+        <dl class="meta-table">
+          <dt>Problem</dt><dd>Understanding, in practice, where retrieval-augmented systems tend to help or fail.</dd>
+          <dt>Approach</dt><dd>Built a full RAG pipeline — a portfolio chatbot grounded in a small custom knowledge base about my own background, skills, and projects.</dd>
+          <dt>Technologies</dt><dd>FAISS for retrieval, LangChain for orchestration, Groq API (llama-3.1-8b-instant), served through FastAPI, deployed on Netlify.</dd>
+          <dt>What was learned</dt><dd class="learned">Building the pipeline end-to-end clarified that retrieval quality, not model choice, was usually the limiting factor in answer quality.</dd>
+        </dl>
+      </div>
+
+      <div class="project">
+        <span class="pnum">05</span>
+        <div class="project-top">
+          <h3>Pashtology — Language Testing Platform</h3>
+          <span class="status deployed">Deployed</span>
+        </div>
+        <dl class="meta-table">
+          <dt>Problem</dt><dd>Students needed a structured way to test language proficiency online.</dd>
+          <dt>Approach</dt><dd>Built and deployed a language testing platform end-to-end.</dd>
+          <dt>Technologies</dt><dd>Deployed on Netlify.</dd>
+          <dt>What was learned</dt><dd class="learned">Shipping a live, working platform reinforced how much of applied AI work is ordinary software engineering — deployment, reliability, and interface details.</dd>
+        </dl>
+        <div class="project-links">
+          <a href="https://pashtology.netlify.app/student" target="_blank" rel="noopener">Live platform ↗</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <span class="pnum">06</span>
+        <div class="project-top">
+          <h3>TalimBot</h3>
+          <span class="status experiment">Early-stage</span>
+        </div>
+        <dl class="meta-table">
+          <dt>Problem</dt><dd>Whether an AI chatbot could provide meaningful educational support to Pakistani students.</dd>
+          <dt>Approach</dt><dd>An educational chatbot, currently under development, also being explored as a foundation for a broader Pakistan-specific AI data platform.</dd>
+          <dt>What was learned</dt><dd class="learned">Still early, but it's clarified that a genuinely useful educational chatbot needs more structured content design than the chatbot layer itself provides.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH NOTES / EXPERIMENTS ================= -->
+<section class="alt" id="notes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Research Notes</span>
+      <h2>Experiments</h2>
+      <p class="section-intro">Logged as they happen, including results that needed correcting. New entries are added as work progresses.</p>
+    </div>
+    <div class="exp-log reveal">
+      <div class="exp-head">
+        <h3>Note 001 — Fine-tuning XLM-RoBERTa for Romanized Pashto Sentiment</h3>
+        <span class="status ongoing">FYP</span>
+      </div>
+      <div class="exp-body">
+        <div class="exp-field">
+          <div class="k">Question</div>
+          <p class="v">Can a multilingual transformer, fine-tuned on a small manually-annotated dataset, reach usable accuracy on 3-class sentiment for Romanized Pashto?</p>
+        </div>
+        <div class="exp-field">
+          <div class="k">Dataset</div>
+          <p class="v">~4,000 manually annotated Romanized Pashto sentences (Positive / Negative / Neutral), sourced from Facebook, Twitter, and WhatsApp.</p>
+        </div>
+        <div class="exp-field">
+          <div class="k">Method</div>
+          <p class="v">Fine-tuned XLM-RoBERTa on Google Colab (T4 GPU), on the reasoning that its multilingual pretraining should transfer reasonably well given vocabulary overlap with Urdu, Hindi, and English tokens, even though Pashto itself was unseen during pretraining.</p>
+        </div>
+        <div class="exp-field">
+          <div class="k">Experiment</div>
+          <p class="v">Standard train/validation split, weighted F1 as the primary evaluation metric.</p>
+        </div>
+        <div class="exp-field">
+          <div class="k">Result</div>
+          <div class="result-bar-wrap">
+            <div class="result-bar">
+              <span class="rl">First run</span>
+              <div class="track"><div class="fill pre"></div></div>
+              <span class="rv">91.0%</span>
+            </div>
+            <div class="result-bar">
+              <span class="rl">After fix</span>
+              <div class="track"><div class="fill post"></div></div>
+              <span class="rv">87.8%</span>
+            </div>
+          </div>
+        </div>
+        <div class="exp-field">
+          <div class="k">Interpretation</div>
+          <p class="v">The initial 91% weighted F1 was inflated by a data-leakage bug in the train/validation split. Once diagnosed and corrected, performance settled at 87.8% weighted F1 — lower, but trustworthy.</p>
+        </div>
+        <div class="exp-field">
+          <div class="k">Limitation</div>
+          <p class="v">Dataset size (~4,000 sentences) is small relative to high-resource sentiment benchmarks. Class balance and dialectal/spelling variation in Romanized Pashto remain open questions.</p>
+        </div>
+        <div class="exp-field next-note">
+          <div class="k">Next step</div>
+          <p class="v">Expand and quality-control the dataset using the annotation platform, then prepare a manuscript describing the dataset and results (see Publications).</p>
+        </div>
+      </div>
+    </div>
+    <p class="notebook-note">More research notes will be added here as new experiments are run.</p>
+  </div>
+</section>
+
+<!-- ================= PUBLICATIONS ================= -->
+<section id="publications">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Publications</span>
+      <h2>Publications: None yet</h2>
+      <p class="section-intro">Shown here honestly rather than left implied. This section will be updated as work moves through review.</p>
+    </div>
+    <div class="reveal">
+      <div class="pub-status">
+        <span class="dot"></span>
+        <p>No peer-reviewed publications, conference papers, or citations at this time.</p>
+      </div>
+      <div class="wip">
+        <span class="eyebrow">Work in Progress</span>
+        <h3>Sentiment Classification for Romanized, Code-Mixed Pashto</h3>
+        <p>A manuscript covering the dataset, annotation methodology, and fine-tuned model described in Research and Projects above is in preparation. Target venues under consideration include ArXiv (preprint), LREC-COLING, and ACL Findings. Supervised by Dr. Rafiullah.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DATASETS ================= -->
+<section class="alt" id="datasets">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Datasets</span>
+      <h2>Data built from scratch</h2>
+      <p class="section-intro">Low-resource work usually starts with labeled data rather than better models. This is where most of the effort has gone so far.</p>
+    </div>
+    <div class="dataset-card reveal">
+      <h3>Romanized Pashto Sentiment Dataset</h3>
+      <div class="sub">Manually annotated · 3-class sentiment · code-mixed Roman-script Pashto</div>
+      <div class="dstat-grid">
+        <div class="dstat"><div class="n">~4,000</div><div class="l">Sentences</div></div>
+        <div class="dstat"><div class="n">3</div><div class="l">Classes</div></div>
+        <div class="dstat"><div class="n">3</div><div class="l">Source platforms</div></div>
+        <div class="dstat"><div class="n">Manual</div><div class="l">Annotation</div></div>
+      </div>
+      <p><strong>Purpose:</strong> Training and evaluating sentiment models for a code-mixed, low-resource language variety with effectively no prior benchmark data.</p>
+      <p><strong>Language:</strong> Romanized Pashto — code-mixed with Urdu and English, written in Roman script as used naturally by speakers online, distinct from standardized Pashto script.</p>
+      <p><strong>Size:</strong> Approximately 4,000 sentences.</p>
+      <p><strong>Structure:</strong> Sentence-level text paired with a Positive / Negative / Neutral label.</p>
+      <p><strong>Annotation method:</strong> Manually labeled; sentences collected from Facebook, Twitter, and WhatsApp. A dedicated multi-role annotation platform was later built to extend and quality-control labeling.</p>
+      <p><strong>Status:</strong> Used to train the current sentiment model; being actively expanded.</p>
+      <p><strong>Availability:</strong> Accompanying fine-tuned model is public on HuggingFace Hub (<a href="https://huggingface.co/abdul-razaq-ork/Romanized_Pashto_Sentiment" target="_blank" rel="noopener">abdul-razaq-ork/Romanized_Pashto_Sentiment</a>); dataset release terms to be confirmed alongside the manuscript.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GITHUB ================= -->
+<section id="github">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">GitHub</span>
+      <h2>Selected repositories</h2>
+      <p class="section-intro">A selection, not a full list — chosen for research and technical relevance. Update the links below to point at the live repositories.</p>
+    </div>
+    <div class="repo-grid reveal">
+      <div class="repo">
+        <div class="repo-top"><h3>Romanized_Pashto_Sentiment</h3></div>
+        <p>Fine-tuned XLM-RoBERTa model, training pipeline, and FastAPI serving platform for Romanized Pashto sentiment analysis.</p>
+        <div class="repo-tech"><span>Python</span><span>Transformers</span><span>FastAPI</span></div>
+        <a class="gh" href="https://huggingface.co/abdul-razaq-ork/Romanized_Pashto_Sentiment" target="_blank" rel="noopener">View on HuggingFace ↗</a>
+      </div>
+      <div class="repo">
+        <div class="repo-top"><h3>Pashto Sentiment Annotation Platform</h3></div>
+        <p>Multi-role annotation tool for labeling Romanized Pashto sentences for sentiment.</p>
+        <div class="repo-tech"><span>FastAPI</span><span>HTML</span></div>
+        <a class="gh" href="#">Add repository link →</a>
+      </div>
+      <div class="repo">
+        <div class="repo-top"><h3>Pashto Flashcards App</h3></div>
+        <p>Flashcard-based application for teaching Pashto to learners anywhere in the world.</p>
+        <div class="repo-tech"><span>Web app</span></div>
+        <a class="gh" href="#">Add repository link →</a>
+      </div>
+      <div class="repo">
+        <div class="repo-top"><h3>Portfolio RAG Chatbot</h3></div>
+        <p>Retrieval-augmented chatbot over a custom knowledge base, answering questions about my background and work.</p>
+        <div class="repo-tech"><span>LangChain</span><span>FAISS</span><span>Groq</span><span>FastAPI</span></div>
+        <a class="gh" href="#">Add repository link →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CV ================= -->
+<section class="alt" id="cv">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Curriculum Vitae</span>
+      <h2>CV</h2>
+    </div>
+    <div class="cv-panel reveal">
+      <div class="cv-summary">
+        <h3>Summary</h3>
+        <ul>
+          <li>Final-year BS Information Technology student, University of Agriculture, Peshawar — expected graduation July 2026.</li>
+          <li>Final-year project: Romanized Pashto sentiment analysis — dataset construction, model fine-tuning, and deployment, supervised by Dr. Rafiullah.</li>
+          <li>Applied focus: AI engineering, NLP, RAG systems, and dataset/annotation work for low-resource and code-mixed languages.</li>
+          <li>Independent projects spanning language-learning tools, applied chatbots, and research infrastructure — see Projects above.</li>
+        </ul>
+      </div>
+      <div class="cv-side">
+        <a class="btn" href="#" download>Download CV (PDF)</a>
+        <p class="note">Placeholder link — replace with the hosted CV file before publishing. Full CV available on request in the meantime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Get in touch</h2>
+      <p class="section-intro">Open to research collaboration, supervision inquiries, and internship or graduate opportunities in AI/NLP.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-item">
+        <span class="l">Email</span>
+        <a href="mailto:add-your-email@example.com">add-your-email@example.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="l">GitHub</span>
+        <a href="#">github.com/add-your-username</a>
+      </div>
+      <div class="contact-item">
+        <span class="l">LinkedIn</span>
+        <a href="#">linkedin.com/in/add-your-profile</a>
+      </div>
+      <div class="contact-item">
+        <span class="l">Hugging Face</span>
+        <a href="https://huggingface.co/abdul-razaq-ork" target="_blank" rel="noopener">huggingface.co/abdul-razaq-ork</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Abdul Razaq Khan</p>
+    <p>Research notebook · updated as work progresses</p>
+  </div>
+</footer>
+
+<script>
+// mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+if(menuBtn){
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+}
+
+// gentle scroll reveal (subtle, single fade+shift, respects reduced motion via CSS)
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.1});
+revealEls.forEach(el => io.observe(el));
+
+// active nav link on scroll
+const sections = document.querySelectorAll('main section[id]');
+const navLinks = document.querySelectorAll('.siterail nav a');
+const navIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    const link = document.querySelector('.siterail nav a[href="#' + e.target.id + '"]');
+    if(link){ if(e.isIntersecting){ navLinks.forEach(l=>l.classList.remove('active')); link.classList.add('active'); } }
+  });
+}, {rootMargin:'-40% 0px -50% 0px'});
+sections.forEach(s => navIo.observe(s));
+</script>
+</body>
+</html>
